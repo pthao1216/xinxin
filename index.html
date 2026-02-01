@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>XinXinTravel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Be+Vietnam+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-image: url("image/11.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+.navbar {
+  background-color: #5F7C85;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* khoảng cách giữa logo và chữ */
+}
+
+.nav-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.8);
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.1);
+}
+
+.nav-brand span {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color:white;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.nav-brand:hover span {
+  color: #fff;
+}
+.nav-list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-list li a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-list li a:hover {
+  color: #ffc107;
+}
+
+.nav-list li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffc107;
+  transition: width 0.3s ease;
+}
+
+.nav-list li a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-list {
+    display: none;
+    position: absolute;
+    top: 66px;
+    right: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #5F7C85;
+    text-align: center;
+  }
+  .nav-list.active {
+    display: flex;
+  }
+  .nav-list li {
+    padding: 12px 0;
+  }
+}
+.hero {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.btn-explore {
+  display: inline-block;
+  background-color:   #5F7C85;
+  color: #fff;
+  padding: 12px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-explore:hover {
+  background-color: #032b5f;
+  transform: translateY(-2px);
+}
+
+.destinations-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px 100px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #032b5f;
+  margin-bottom: 50px;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(212,205,205,0.7);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.05);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  color: #2c3e50;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.btn-discover {
+  display: inline-block;
+  background-color: #5F7C85;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-discover:hover {
+  background-color: #4a6169;
+  color: #ffc107;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+footer {
+  background-color: rgba(33,37,41,0.9);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    <div class="nav-brand">
+        <a href="https://www.instagram.com/noble.xin.tan/" ><img src="image/logo.jpg" alt="XinXinTravel" class="nav-logo"></a>
+      <span>XinXinTravel</span>
+    </div>
+    <ul class="nav-list" id="navList">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="1.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1 class="hero-title">Du lịch cùng Tân Ngọc Phạm</h1>
+  <p class="hero-subtitle">Khám phá TAIWAN</p>
+  <a href="#destinations" class="btn-explore">Explore</a>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations" class="destinations-section">
+  <h2 class="section-title">TAI CHUNG</h2>
+
+  <div class="grid-container">
+    <div class="card">
+      <img src="image/10.jpg" class="card-img">
+      <div class="card-body">
+        <h3 class="card-title">Đền Khổng Tử Đài Trung</h3>
+        <p class="card-text">Không giống như những ngôi đền điển hình của Đài Loan, những ngôi đền Khổng Tử có xu hướng đơn giản trong thiết kế và những nơi thanh bình</p>
+        <a href="https://gody.vn/chau-a/taiwan/taichung/den-khong-tu-dai-trung-confucius-temple-taichung" class="btn-discover">Khám phá địa điểm</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="image/2.jpg" class="card-img">
+      <div class="card-body">
+        <h3 class="card-title">Công viên Di sản Văn hóa</h3>
+        <p class="card-text">Ở trung tâm thành phố Đài Trung. Nơi đây từng là một nhà máy sản xuất rượu quan trọng của Đài Loan.</p>
+        <a href="https://tatinta.com/diem-den/cong-vien-di-san-van-hoa-dai-trung-taichung-cultural-heritage-park/3428" class="btn-discover">Khám phá địa điểm</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="image/3.jpg" class="card-img">
+      <div class="card-body">
+        <h3 class="card-title">Hồ Nhật Nguyệt (Sun Moon Lake)</h3>
+        <p class="card-text"> Là hồ nước tự nhiên có diện tích lớn nhất ở nơi đây. Nó cao hơn so với mực nước biển 748m, với độ sâu 27m và có diện tích khoảng 7.93 km2.</p>
+        <a href="https://dulichviet.com.vn/tin-tuc/kham-pha-ho-nhat-nguyet-dai-loan-tuyet-tac-cua-thien-nhien" class="btn-discover">Khám phá địa điểm</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="image/4.jpg" class="card-img">
+      <div class="card-body">
+        <h3 class="card-title">Đền Wenwu trên Hồ Nhật Nguyệt</h3>
+        <p class="card-text">nằm ở vai núi nằm ở phía bắc hồ Sun Moon. Nó được xây dựng vào năm 1938</p>
+        <a href="https://gody.vn/chau-a/taiwan/nantou/den-wenwu-tren-ho-nhat-nguyet-sun-moon-lake-wenwu-temple" class="btn-discover">Khám phá địa điểm</a>
+      </div>
+    </div>
+	    <div class="card">
+      <img src="image/5.jpg" class="card-img">
+      <div class="card-body">
+        <h3 class="card-title">Checheng Logging Exhibition Hall</h3>
+        <p class="card-text">Một hồ nước với phong cảnh tuyệt đẹp, có đường đi bộ/đường xe đạp và trung tâm du khách, cung cấp các triển lãm sống động và quán cà phê.</p>
+        <a href="https://www.chictrip.com.tw/?action=poiInfo&poiId=8e1331cb-ba8b-43f6-b070-98a99d938302" class="btn-discover">Khám phá địa điểm</a>
+      </div>
+    </div>
+	    <div class="card">
+      <img src="image/6.jpg" class="card-img">
+      <div class="card-body">
+        <h3 class="card-title">Cingjing Farm </h3>
+        <p class="card-text"> Qingjing Farm, hay còn được biết đến là Cingjing Farm, vốn là một trang trại nổi tiếng nằm ở thị trấn Ren’ai, Nam Đầu</p>
+        <a href="https://mia.vn/cam-nang-du-lich/du-lich-qingjing-farm-15157"class="btn-discover">Khám phá địa điểm</a>
+		
+      </div>
+    </div>
+	  <div class="card">
+      <img src="image/7.jpg" class="card-img">
+      <div class="card-body">
+        <h3 class="card-title">Chợ Đêm Đài Trung  </h3>
+        <p class="card-text"> Đi ăn điiiiiiiiiiii</p>
+        <a href="https://www.kkday.com/vi/blog/39315/du-lich-dai-loan-tu-tuc-5-cho-dem-nhon-nhip-nhat-dai-trung/?srsltid=AfmBOoqF12B5V4JRH83qOoPUWHKk5eZ2_8jFg5_k3EFUC12mUvFFRUCw"class="btn-discover">Khám phá địa điểm</a>
+		
+ 
+      </div>
+  </div>
+	  <div class="card">
+      <img src="image/7.jpg" class="card-img">
+      <div class="card-body">
+        <h3 class="card-title">Làng văn hóa Cửu Tộc Formosan </h3>
+        <p class="card-text"> Công viên này được thành lập với mục đích tôn vinh, bảo tồn và giới thiệu di sản của chín bộ tộc thổ dân lớn nhất đảo Đài Loan</p>
+        <a href="https://www.tripadvisor.com.vn/Attraction_Review-g13808635-d1940933-Reviews-Formosan_Aboriginal_Culture_Village-Yuchi_Nantou.html"class="btn-discover">Khám phá địa điểm</a>
+		
+ 
+      </div>
+  </div>
+  </div>
+</section>
+<footer>
+  <p>&copy; XINXIN TRAVEL </p>
+</footer>
+
+<script>
+const toggle = document.getElementById("menuToggle");
+const navList = document.getElementById("navList");
+toggle.onclick = () => {
+  navList.classList.toggle("active");
+};
+</script>
+
+</body>
+</html>
